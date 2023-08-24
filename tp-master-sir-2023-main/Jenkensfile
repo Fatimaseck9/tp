@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage("Source") {
             steps {
-                git branch: 'master', url: 'https://github.com/Fatimaseck9/tp/'
+                git branch: 'master', url: 'https://github.com/Fatimaseck9/tp/master/tp-master-sir-2023-main.git'
             }
         }
         
