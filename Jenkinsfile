@@ -13,10 +13,8 @@ pipeline {
          stage("Build") {
             steps {
                
-                    script {
-                    def workspacePath = env.WORKSPACE
-                    bat "cd ${workspacePath} && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install"
-                }
+                  bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install'
+
             }
         }
 
