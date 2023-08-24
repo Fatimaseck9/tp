@@ -3,6 +3,10 @@ pipeline {
     tools {
         maven 'Maven'
     }
+     environment{
+        SONAR_URL="http:// 192.168.1.9:9000"
+    }
+
     stages {
         stage("Source") {
             steps {
@@ -21,7 +25,8 @@ pipeline {
         stage("SonarQube Analysis") {
             steps {
                 
-                bat 'mvn sonar:sonar'
+                bat 'mvn sonar:sonar-Dsonar.host.url=$SONAR_URL'
+
 
                 
             }
