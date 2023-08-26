@@ -14,7 +14,10 @@ pipeline {
         }
         stage("Build") {
             steps {
-                bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install'
+                script {
+                    def workspacePath = env.WORKSPACE
+                    bat "cd ${workspacePath} && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install"
+                }
             }
         }
         stage("SonarQube Analysis") {
