@@ -8,23 +8,16 @@ pipeline {
             steps {
                 git branch: 'master', url: 'https://github.com/Fatimaseck9/tp.git'  
         }
-        
          stage("Build") {
             steps {
-               
-                    script {
-                    def workspacePath = env.WORKSPACE
-                    bat "cd ${workspacePath} && mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install"
+               bat "mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install"
                 }
             }
         }
 
         stage("SonarQube Analysis") {
-            steps {
-                
+            steps {  
                 bat 'mvn sonar:sonar'
-
-                
             }
         }
         stage('Approve Deployment') {
